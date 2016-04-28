@@ -7,12 +7,6 @@ module Iyzipay
     RANDOM_STRING_SIZE = 8
     RANDOM_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 
-    attr_accessor :configuration
-
-    def initialize(client_configuration)
-      @configuration = client_configuration
-    end
-
     def get_http_header(request = nil, authorize_request = true)
       header = {:accept => 'application/json',
                 :'content-type' => 'application/json'}
