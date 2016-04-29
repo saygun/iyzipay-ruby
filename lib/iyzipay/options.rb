@@ -1,6 +1,3 @@
-#!/usr/bin/env ruby
-# coding: utf-8
-
 module Iyzipay
   class Options
     attr_accessor :api_key

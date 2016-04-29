@@ -1,6 +1,3 @@
-#!/usr/bin/env ruby
-# coding: utf-8
-
 module Iyzipay
   class HttpClient
     def self.get(url, header)
