@@ -1,0 +1,111 @@
+# coding: utf-8
+
+require_relative 'spec_helper'
+
+RSpec.describe 'Iyzipay' do
+  before :all do
+    @options = Iyzipay::Options.new
+    @options.api_key = 'your api key'
+    @options.secret_key = 'your secret key'
+    @options.base_url = 'https://api.iyzipay.com'
+  end
+
+  it 'should initialize bkm express' do
+    buyer = {
+        id: 'BY789',
+        name: 'John',
+        surname: 'Doe',
+        identityNumber: '74300864791',
+        email: 'email@email.com',
+        gsmNumber: '+905350000000',
+        registrationDate: '2013-04-21 15:12:09',
+        lastLoginDate: '2015-10-05 12:43:35',
+        registrationAddress: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
+        city: 'Istanbul',
+        country: 'Turkey',
+        zipCode: '34732',
+        ip: '85.34.78.112'
+    }
+    address = {
+        address: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
+        zipCode: '34732',
+        contactName: 'John Doe',
+        city: 'Istanbul',
+        country: 'Turkey'
+    }
+
+    item1 = {
+        id: 'BI101',
+        name: 'Binocular',
+        category1: 'Collectibles',
+        category2: 'Accessories',
+        itemType: 'PHYSICAL',
+        price: '0.3',
+        subMerchantKey: 'sub merchant key',
+        subMerchantPrice: '0.27'
+    }
+    item2 = {
+        id: 'BI102',
+        name: 'Game code',
+        category1: 'Game',
+        category2: 'Online Game Items',
+        itemType: 'VIRTUAL',
+        price: '0.5',
+        subMerchantKey: 'sub merchant key',
+        subMerchantPrice: '0.42'
+    }
+    item3 = {
+        id: 'BI103',
+        name: 'Usb',
+        category1: 'Electronics',
+        category2: 'Usb / Cable',
+        itemType: 'PHYSICAL',
+        price: '0.2',
+        subMerchantKey: 'sub merchant key',
+        subMerchantPrice: '0.18'
+    }
+    request = {
+        locale: 'tr',
+        conversationId: '123456789',
+        price: '1.0',
+        basketId: 'B67832',
+        paymentGroup: 'PRODUCT',
+        callbackUrl: 'https://www.merchant.com/callback',
+        buyer: buyer,
+        billingAddress: address,
+        shippingAddress: address,
+        basketItems: [item1, item2, item3]
+    }
+    bkm_initialize = Iyzipay::Model::BkmInitialize.new.create(request, @options)
+
+    begin
+      $stderr.puts bkm_initialize.inspect
+
+      bkm_initialize_dict = JSON.parse(bkm_initialize)
+      unless bkm_initialize_dict['htmlContent'].nil?
+        $stderr.puts Base64.decode64(bkm_initialize_dict['htmlContent']).inspect
+      end
+    rescue
+      $stderr.puts 'oops'
+      raise
+    end
+  end
+
+  it 'should retrieve bkm express payment' do
+    request = {
+        locale: 'tr',
+        conversationId: '123456789',
+        token: '1462280336796'
+    }
+    bkm = Iyzipay::Model::Bkm.new.retrieve(request, @options)
+    begin
+      $stderr.puts bkm.inspect
+    rescue
+      $stderr.puts 'oops'
+      raise
+    end
+  end
+
+  after :each do
+  end
+end
