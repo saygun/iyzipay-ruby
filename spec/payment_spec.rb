@@ -34,7 +34,6 @@ RSpec.describe 'Iyzipay' do
         zipCode: '34732',
         ip: '85.34.78.112'
     }
-
     address = {
         address: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
         zipCode: '34732',
