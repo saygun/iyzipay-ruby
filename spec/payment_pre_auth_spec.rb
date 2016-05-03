@@ -87,9 +87,25 @@ RSpec.describe 'Iyzipay' do
         shippingAddress: address,
         basketItems: [item1, item2, item3]
     }
-    payment = Iyzipay::Model::PaymentPreAuth.new.create(request, @options)
+    payment_pre_auth = Iyzipay::Model::PaymentPreAuth.new.create(request, @options)
     begin
-      $stderr.puts payment.inspect
+      $stderr.puts payment_pre_auth.inspect
+    rescue
+      $stderr.puts 'oops'
+      raise
+    end
+  end
+
+  it 'should retrieve payment' do
+    request = {
+        locale: 'tr',
+        conversationId: '123456789',
+        paymentId: '1',
+        paymentConversationId: '123456789',
+    }
+    payment_pre_auth = Iyzipay::Model::PaymentPreAuth.new.retrieve(request, @options)
+    begin
+      $stderr.puts payment_pre_auth.inspect
     rescue
       $stderr.puts 'oops'
       raise
