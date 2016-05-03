@@ -3,8 +3,8 @@ module Iyzipay
     class Payment < IyzipayResource
 
       def create(request = {}, options)
-        request_string = to_pki_string(request)
-        HttpClient.post("#{options.base_url}/payment/iyzipos/auth/ecom", get_http_header(request_string, options), request.to_json)
+        pki_string = to_pki_string(request)
+        HttpClient.post("#{options.base_url}/payment/iyzipos/auth/ecom", get_http_header(pki_string, options), request.to_json)
       end
 
       def to_pki_string(request)
