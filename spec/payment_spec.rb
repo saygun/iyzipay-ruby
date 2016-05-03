@@ -5,57 +5,90 @@ require_relative 'spec_helper'
 RSpec.describe 'Iyzipay' do
   before :all do
     @options = Iyzipay::Options.new
-    @options.api_key = 'test'
-    @options.secret_key = 'test'
-    @options.base_url = 'http://localhost:8080'
+    @options.api_key = 'your api key'
+    @options.secret_key = 'your secret key'
+    @options.base_url = 'https://api.iyzipay.com'
   end
 
-  it 'should create payment' do
-    payment_card = {card_token: 'TggW8eg3fDucmCxSkPqAloBsoVA=', card_user_key: 'hd5F9J+IE6BxZCoT9rctolTE9EI='}
-    buyer =
-        {
-            id: 'BY789',
-            name: 'John',
-            surname: 'Doe',
-            identity_number: '1000001',
-            email: 'john@doe.com',
-            registration_address: 'Tomtom Mah. Nur-i Ziya Sok. 16/1 34433 Beyoğlu',
-            city: 'Istanbul',
-            country: 'Turkey',
-            ip: '32.43.23.43'
-        }
+  it 'should create payment with physical and virtual item for market place' do
+    payment_card = {
+        cardHolderName: 'John Doe',
+        cardNumber: '5528790000000008',
+        expireYear: '2030',
+        expireMonth: '12',
+        cvc: '123',
+        registerCard: 0
+    }
+    buyer = {
+        id: 'BY789',
+        name: 'John',
+        surname: 'Doe',
+        identityNumber: '74300864791',
+        email: 'email@email.com',
+        gsmNumber: '+905350000000',
+        registrationDate: '2013-04-21 15:12:09',
+        lastLoginDate: '2015-10-05 12:43:35',
+        registrationAddress: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
+        city: 'Istanbul',
+        country: 'Turkey',
+        zipCode: '34732',
+        ip: '85.34.78.112'
+    }
 
-    address =
-        {
-            address: 'Tomtom Mah. Nur-i Ziya Sok. 16/1 34433 Beyoğlu',
-            contact_name: 'John Doe',
-            city: 'Istanbul',
-            country: 'Turkey'
-        }
+    address = {
+        address: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
+        zipCode: '34732',
+        contactName: 'John Doe',
+        city: 'Istanbul',
+        country: 'Turkey'
+    }
 
-    item =
-        {
-            id: 'PARASUT:1',
-            name: 'Test Subscription',
-            category1: 'Finance',
-            category2: 'Online',
-            item_type: 'VIRTUAL',
-            price: '1'
-        }
-    params =
-        {
-            locale: 'tr',
-            conversation_id: '123456',
-            price: 1,
-            paid_price: 1,
-            basket_id: 'TEST_BASKET_ID',
-            payment_group: 'SUBSCRIPTION',
-            payment_card: payment_card,
-            buyer: buyer,
-            billing_address: address,
-            basket_items: [item]
-        }
-    payment = Iyzipay::Model::Payment.new(params, @options)
+    item1 = {
+        id: 'BI101',
+        name: 'Binocular',
+        category1: 'Collectibles',
+        category2: 'Accessories',
+        itemType: 'PHYSICAL',
+        price: '0.3',
+        subMerchantKey: 'sub merchant key',
+        subMerchantPrice: '0.27'
+    }
+    item2 = {
+        id: 'BI102',
+        name: 'Game code',
+        category1: 'Game',
+        category2: 'Online Game Items',
+        itemType: 'VIRTUAL',
+        price: '0.5',
+        subMerchantKey: 'sub merchant key',
+        subMerchantPrice: '0.42'
+    }
+    item3 = {
+        id: 'BI103',
+        name: 'Usb',
+        category1: 'Electronics',
+        category2: 'Usb / Cable',
+        itemType: 'PHYSICAL',
+        price: '0.2',
+        subMerchantKey: 'sub merchant key',
+        subMerchantPrice: '0.18'
+    }
+    request = {
+        locale: 'tr',
+        conversationId: '123456789',
+        price: '1.0',
+        paidPrice: '1.1',
+        installment: 1,
+        paymentChannel: 'WEB',
+        basketId: 'B67832',
+        paymentGroup: 'PRODUCT',
+        paymentCard: payment_card,
+        buyer: buyer,
+        billingAddress: address,
+        shippingAddress: address,
+        basketItems: [item1, item2, item3]
+    }
+    payment = Iyzipay::Model::Payment.new.create(request, @options)
     begin
       $stderr.puts payment.inspect
     rescue
