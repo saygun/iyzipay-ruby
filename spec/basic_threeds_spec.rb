@@ -80,6 +80,22 @@ RSpec.describe 'Iyzipay' do
     end
   end
 
+  it 'should auth threeds' do
+    request = {
+        locale: 'tr',
+        conversationId: '123456789',
+        paymentId: '1'
+    }
+    basic_threeds = Iyzipay::Model::BasicThreedsPayment.new.create(request, @options)
+
+    begin
+      $stderr.puts basic_threeds.inspect
+    rescue
+      $stderr.puts 'oops'
+      raise
+    end
+  end
+
   after :each do
   end
 end

@@ -10,7 +10,7 @@ RSpec.describe 'Iyzipay' do
     @options.base_url = 'https://api.iyzipay.com'
   end
 
-  it 'should initialize bkm express' do
+  it 'should initialize checkout form' do
     buyer = {
         id: 'BY789',
         name: 'John',
@@ -68,6 +68,7 @@ RSpec.describe 'Iyzipay' do
         locale: 'tr',
         conversationId: '123456789',
         price: '1.0',
+        paidPrice: '1.0',
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
         callbackUrl: 'https://www.merchant.com/callback',
@@ -76,30 +77,10 @@ RSpec.describe 'Iyzipay' do
         shippingAddress: address,
         basketItems: [item1, item2, item3]
     }
-    bkm_initialize = Iyzipay::Model::BkmInitialize.new.create(request, @options)
+    checkout_form_initialize = Iyzipay::Model::CheckoutFormInitializePreAuth.new.create(request, @options)
 
     begin
-      $stderr.puts bkm_initialize.inspect
-
-      bkm_initialize_dict = JSON.parse(bkm_initialize)
-      unless bkm_initialize_dict['htmlContent'].nil?
-        $stderr.puts Base64.decode64(bkm_initialize_dict['htmlContent']).inspect
-      end
-    rescue
-      $stderr.puts 'oops'
-      raise
-    end
-  end
-
-  it 'should retrieve bkm express payment' do
-    request = {
-        locale: 'tr',
-        conversationId: '123456789',
-        token: '1462280336796'
-    }
-    bkm = Iyzipay::Model::Bkm.new.retrieve(request, @options)
-    begin
-      $stderr.puts bkm.inspect
+      $stderr.puts checkout_form_initialize.inspect
     rescue
       $stderr.puts 'oops'
       raise

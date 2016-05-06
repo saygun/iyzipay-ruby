@@ -70,7 +70,7 @@ RSpec.describe 'Iyzipay' do
         price: '1.0',
         paidPrice: '1.0',
         basketId: 'B67832',
-        paymentGroup: 'PRODUCT',
+        paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
         callbackUrl: 'https://www.merchant.com/callback',
         buyer: buyer,
         billingAddress: address,
