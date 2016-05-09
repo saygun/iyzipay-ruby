@@ -10,7 +10,15 @@ RSpec.describe 'Iyzipay' do
     @options.base_url = 'https://api.iyzipay.com'
   end
 
-  it 'should initialize checkout form' do
+  it 'should create three payment with physical and virtual item for market place' do
+    payment_card = {
+        cardHolderName: 'John Doe',
+        cardNumber: '5528790000000008',
+        expireYear: '2030',
+        expireMonth: '12',
+        cvc: '123',
+        registerCard: 0
+    }
     buyer = {
         id: 'BY789',
         name: 'John',
@@ -68,19 +76,58 @@ RSpec.describe 'Iyzipay' do
         locale: 'tr',
         conversationId: '123456789',
         price: '1.0',
-        paidPrice: '1.0',
+        paidPrice: '1.1',
+        installment: 1,
+        paymentChannel: Iyzipay::Model::PaymentChannel::WEB,
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
         callbackUrl: 'https://www.merchant.com/callback',
+        paymentCard: payment_card,
         buyer: buyer,
         billingAddress: address,
         shippingAddress: address,
         basketItems: [item1, item2, item3]
     }
-    checkout_form_initialize = Iyzipay::Model::CheckoutFormInitializePreAuth.new.create(request, @options)
-
+    threeds_initialize_pre_auth = Iyzipay::Model::ThreedsInitializePreAuth.new.create(request, @options)
     begin
-      $stderr.puts checkout_form_initialize.inspect
+      $stderr.puts threeds_initialize_pre_auth.inspect
+
+      threeds_initialize_dict = JSON.parse(threeds_initialize_pre_auth)
+      unless threeds_initialize_dict['threeDSHtmlContent'].nil?
+        $stderr.puts Base64.decode64(threeds_initialize_dict['threeDSHtmlContent']).inspect
+      end
+    rescue
+      $stderr.puts 'oops'
+      raise
+    end
+  end
+
+  it 'should auth threeds' do
+    request = {
+        locale: 'tr',
+        conversationId: '123456789',
+        paymentId: '1',
+        conversationData: 'conversation data',
+    }
+    threeds_payment = Iyzipay::Model::ThreedsPayment.new.create(request, @options)
+    begin
+      $stderr.puts threeds_payment.inspect
+    rescue
+      $stderr.puts 'oops'
+      raise
+    end
+  end
+
+  it 'should retrieve payment' do
+    request = {
+        locale: 'tr',
+        conversationId: '123456789',
+        paymentId: '9',
+        paymentConversationId: '123456789',
+    }
+    threeds_payment = Iyzipay::Model::PaymentPreAuth.new.retrieve(request, @options)
+    begin
+      $stderr.puts threeds_payment.inspect
     rescue
       $stderr.puts 'oops'
       raise

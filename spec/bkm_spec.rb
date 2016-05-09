@@ -39,7 +39,7 @@ RSpec.describe 'Iyzipay' do
         name: 'Binocular',
         category1: 'Collectibles',
         category2: 'Accessories',
-        itemType: 'PHYSICAL',
+        itemType: Iyzipay::Model::BasketItemType::PHYSICAL,
         price: '0.3',
         subMerchantKey: 'sub merchant key',
         subMerchantPrice: '0.27'
@@ -49,7 +49,7 @@ RSpec.describe 'Iyzipay' do
         name: 'Game code',
         category1: 'Game',
         category2: 'Online Game Items',
-        itemType: 'VIRTUAL',
+        itemType: Iyzipay::Model::BasketItemType::VIRTUAL,
         price: '0.5',
         subMerchantKey: 'sub merchant key',
         subMerchantPrice: '0.42'
@@ -59,7 +59,7 @@ RSpec.describe 'Iyzipay' do
         name: 'Usb',
         category1: 'Electronics',
         category2: 'Usb / Cable',
-        itemType: 'PHYSICAL',
+        itemType: Iyzipay::Model::BasketItemType::PHYSICAL,
         price: '0.2',
         subMerchantKey: 'sub merchant key',
         subMerchantPrice: '0.18'
