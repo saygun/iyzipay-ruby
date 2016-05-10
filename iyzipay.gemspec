@@ -2,6 +2,7 @@ Gem::Specification.new do |s|
   s.name        = 'iyzipay'
   s.version     = '1.0.0'
   s.required_ruby_version = '>= 2.1.6'
+  s.summary     = "iyzipay api ruby client"
   s.description = "iyzipay api ruby client"
   s.authors     = ["Iyzico"]
   s.email       = 'iyzico-ci@iyzico.com'
