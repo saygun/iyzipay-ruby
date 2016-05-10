@@ -1,7 +1,10 @@
+$:.unshift(File.join(File.dirname(__FILE__), 'lib'))
+
+require 'iyzipay/version'
+
 Gem::Specification.new do |s|
   s.name        = 'iyzipay'
-  s.version     = GVB.version
-  s.date        = GVB.date
+  s.version     = Iyzipay::VERSION
   s.required_ruby_version = '>= 2.1.6'
   s.summary     = 'iyzipay api ruby client'
   s.description = 'iyzipay api ruby client. You can sign up for an iyzico account at https://iyzico.com'
