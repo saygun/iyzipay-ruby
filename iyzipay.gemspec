@@ -1,5 +1,3 @@
-require 'git-version-bump'
-
 Gem::Specification.new do |s|
   s.name        = 'iyzipay'
   s.version     = GVB.version
