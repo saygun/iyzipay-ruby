@@ -11,5 +11,4 @@ deploy:
   on:
     tags: true
     repo: iyzico/iyzipay-ruby
-    branch: origin/master
   skip_cleanup: true
