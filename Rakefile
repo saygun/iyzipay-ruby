@@ -1,4 +1,5 @@
-require 'rspec/core/rake_task'
+task default: %w[test]
 
-RSpec::Core::RakeTask.new(:spec)
-task :default => :spec
+task :test do
+  puts "@TODO"
+end
