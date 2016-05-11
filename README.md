@@ -1,3 +1,3 @@
 # iyzipay-ruby
 
-Ruby client is still in development.
+Ruby client is still in development
