@@ -1,5 +1,5 @@
-$:.push File.expand_path('../lib', __FILE__)
-
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'iyzipay/version'
 
 Gem::Specification.new do |s|
@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rest-client', '~> 1.8', '>= 1.8.0'
   s.add_development_dependency 'rspec', '~> 3.3', '>= 3.3.0'
   s.add_development_dependency 'rspec-rails', '~> 3.3', '>= 3.3.0'
-  s.add_dependency 'git-version-bump', '~> 0.15.1'
+  s.add_dependency 'git-version-bump'
 
   s.require_paths = ['lib']
 end
