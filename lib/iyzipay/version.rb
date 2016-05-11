@@ -1,3 +1,3 @@
 module Iyzipay
-  VERSION = CSV.read("VERSION")
+  VERSION = IO.read("VERSION")
 end
