@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rest-client', '~> 1.8', '>= 1.8.0'
   s.add_development_dependency 'rspec', '~> 3.3', '>= 3.3.0'
   s.add_development_dependency 'rspec-rails', '~> 3.3', '>= 3.3.0'
-  s.add_dependency('git-version-bump', '~> 0.15.1')
+  s.add_dependency 'git-version-bump', '~> 0.15.1'
 
   s.require_paths = ['lib']
 end
