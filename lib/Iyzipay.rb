@@ -4,6 +4,7 @@
 require 'json'
 require 'rest-client'
 require 'base64'
+require 'CSV'
 
 module Iyzipay
 end
