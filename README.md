@@ -13,6 +13,14 @@ You can sign up for an iyzico account at https://iyzico.com
 
     gem install iyzipay
 
+## Bundler
+
+``` ruby
+source 'https://rubygems.org'
+
+gem 'rails'
+gem 'iyzipay'
+
 # Usage
 
 ```ruby
