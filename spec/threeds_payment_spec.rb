@@ -82,10 +82,10 @@ RSpec.describe 'Iyzipay' do
         shippingAddress: address,
         basketItems: [item1, item2, item3]
     }
-    threeds_initialize_pre_auth = Iyzipay::Model::ThreedsInitialize.new.create(request, @options)
+    threeds_initialize = Iyzipay::Model::ThreedsInitialize.new.create(request, @options)
     begin
-      $stderr.puts threeds_initialize_pre_auth.inspect
-      threeds_initialize_dict = JSON.parse(threeds_initialize_pre_auth)
+      $stderr.puts threeds_initialize.inspect
+      threeds_initialize_dict = JSON.parse(threeds_initialize)
       unless threeds_initialize_dict['threeDSHtmlContent'].nil?
         $stderr.puts Base64.decode64(threeds_initialize_dict['threeDSHtmlContent']).inspect
       end
@@ -173,11 +173,11 @@ RSpec.describe 'Iyzipay' do
         shippingAddress: address,
         basketItems: [item1, item2, item3]
     }
-    threeds_initialize_pre_auth = Iyzipay::Model::ThreedsInitializePreAuth.new.create(request, @options)
+    threeds_initialize = Iyzipay::Model::ThreedsInitialize.new.create(request, @options)
     begin
-      $stderr.puts threeds_initialize_pre_auth.inspect
+      $stderr.puts threeds_initialize.inspect
 
-      threeds_initialize_dict = JSON.parse(threeds_initialize_pre_auth)
+      threeds_initialize_dict = JSON.parse(threeds_initialize)
       unless threeds_initialize_dict['threeDSHtmlContent'].nil?
         $stderr.puts Base64.decode64(threeds_initialize_dict['threeDSHtmlContent']).inspect
       end
@@ -191,10 +191,10 @@ RSpec.describe 'Iyzipay' do
     request = {
         locale: 'tr',
         conversationId: '123456789',
-        paymentId: '9',
+        paymentId: '1',
         conversationData: 'conversation data',
     }
-    threeds_payment = Iyzipay::Model::ThreedsPayment.new.create(request, @options)
+    threeds_payment = Iyzipay::Model::ThreedsPayment.new.retrieve(request, @options)
     begin
       $stderr.puts threeds_payment.inspect
     rescue
@@ -207,7 +207,7 @@ RSpec.describe 'Iyzipay' do
     request = {
         locale: 'tr',
         conversationId: '123456789',
-        paymentId: '267',
+        paymentId: '9',
         paymentConversationId: '123456789',
     }
     threeds_payment = Iyzipay::Model::ThreedsPayment.new.retrieve(request, @options)

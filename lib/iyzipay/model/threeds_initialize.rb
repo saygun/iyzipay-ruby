@@ -21,6 +21,10 @@ module Iyzipay
             append(:billingAddress, Address.to_pki_string(request[:billingAddress])).
             append_array(:basketItems, Basket.to_pki_string(request[:basketItems])).
             append(:paymentSource, request[:paymentSource]).
+            append(:currency, request[:currency]).
+            append(:posOrderId, request[:posOrderId]).
+            append(:connectorName, request[:connectorName]).
+            append(:callbackUrl, request[:callbackUrl]).
             get_request_string
       end
     end
