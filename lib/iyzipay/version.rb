@@ -1,5 +1,3 @@
-require 'git-version-bump'
-
 module Iyzipay
-    VERSION = GVB.version
+  VERSION = IO.read("VERSION")
 end
