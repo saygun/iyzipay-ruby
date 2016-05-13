@@ -21,6 +21,8 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'iyzipay'
 
+```
+
 # Usage
 
 ```ruby
