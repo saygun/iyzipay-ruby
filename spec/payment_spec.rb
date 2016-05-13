@@ -129,7 +129,7 @@ RSpec.describe 'Iyzipay' do
         category2: 'Accessories',
         itemType: Iyzipay::Model::BasketItemType::PHYSICAL,
         price: '0.3',
-        subMerchantKey: 'ha3us4v5mk2652kkjk5728cc4407an',
+        subMerchantKey: 'sub merchant key',
         subMerchantPrice: '0.27'
     }
     item2 = {
@@ -139,7 +139,7 @@ RSpec.describe 'Iyzipay' do
         category2: 'Online Game Items',
         itemType: Iyzipay::Model::BasketItemType::VIRTUAL,
         price: '0.5',
-        subMerchantKey: 'ha3us4v5mk2652kkjk5728cc4407an',
+        subMerchantKey: 'sub merchant key',
         subMerchantPrice: '0.42'
     }
     item3 = {
@@ -149,7 +149,7 @@ RSpec.describe 'Iyzipay' do
         category2: 'Usb / Cable',
         itemType: Iyzipay::Model::BasketItemType::PHYSICAL,
         price: '0.2',
-        subMerchantKey: 'ha3us4v5mk2652kkjk5728cc4407an',
+        subMerchantKey: 'sub merchant key',
         subMerchantPrice: '0.18'
     }
     request = {
