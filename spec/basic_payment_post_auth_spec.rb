@@ -17,6 +17,7 @@ RSpec.describe 'Iyzipay' do
         paymentId: '252',
         paidPrice: '1',
         ip: '85.34.78.112',
+        currency: Iyzipay::Model::Currency::TRY
     }
     payment = Iyzipay::Model::BasicPaymentPostAuth.new.create(request, @options)
     begin

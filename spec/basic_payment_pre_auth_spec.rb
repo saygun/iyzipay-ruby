@@ -29,6 +29,7 @@ RSpec.describe 'Iyzipay' do
         installment: 1,
         paidPrice: '1',
         price: '1',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card
     }
     payment = Iyzipay::Model::BasicPaymentPreAuth.new.create(request, @options)
@@ -55,6 +56,7 @@ RSpec.describe 'Iyzipay' do
         installment: 1,
         paidPrice: '1',
         price: '1',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card
     }
     payment = Iyzipay::Model::BasicPaymentPreAuth.new.create(request, @options)
