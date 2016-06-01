@@ -7,7 +7,7 @@ RSpec.describe 'Iyzipay' do
     @options = Iyzipay::Options.new
     @options.api_key = 'your api key'
     @options.secret_key = 'your secret key'
-    @options.base_url = 'https://api.iyzipay.com'
+    @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
   it 'should create personal sub merchant' do
@@ -23,7 +23,8 @@ RSpec.describe 'Iyzipay' do
         gsmNumber: '+905350000000',
         name: 'John\'s market',
         iban: 'TR180006200119000006672315',
-        identityNumber: '1234567890'
+        identityNumber: '1234567890',
+        currency: Iyzipay::Model::Currency::TRY
     }
     sub_merchant = Iyzipay::Model::SubMerchant.new.create(request, @options)
     begin
@@ -47,7 +48,8 @@ RSpec.describe 'Iyzipay' do
         gsmNumber: '+905350000000',
         name: 'John\'s market',
         iban: 'TR180006200119000006672315',
-        identityNumber: '31300864726'
+        identityNumber: '31300864726',
+        currency: Iyzipay::Model::Currency::TRY
     }
     sub_merchant = Iyzipay::Model::SubMerchant.new.create(request, @options)
     begin
@@ -71,7 +73,8 @@ RSpec.describe 'Iyzipay' do
         email: 'email@submerchantemail.com',
         gsmNumber: '+905350000000',
         name: 'John\'s market',
-        iban: 'TR180006200119000006672315'
+        iban: 'TR180006200119000006672315',
+        currency: Iyzipay::Model::Currency::TRY
     }
     sub_merchant = Iyzipay::Model::SubMerchant.new.create(request, @options)
     begin
@@ -95,7 +98,8 @@ RSpec.describe 'Iyzipay' do
         email: 'email@submerchantemail.com',
         gsmNumber: '+905350000000',
         name: 'Jane\'s market',
-        identityNumber: '31300864726'
+        identityNumber: '31300864726',
+        currency: Iyzipay::Model::Currency::TRY
     }
     sub_merchant = Iyzipay::Model::SubMerchant.new.update(request, @options)
     begin
@@ -119,7 +123,8 @@ RSpec.describe 'Iyzipay' do
         gsmNumber: '+905350000000',
         name: 'Jane\'s market',
         iban: 'TR180006200119000006672315',
-        identityNumber: '31300864726'
+        identityNumber: '31300864726',
+        currency: Iyzipay::Model::Currency::TRY
     }
     sub_merchant = Iyzipay::Model::SubMerchant.new.update(request, @options)
     begin
@@ -143,7 +148,8 @@ RSpec.describe 'Iyzipay' do
         email: 'email@submerchantemail.com',
         gsmNumber: '+905350000000',
         name: 'Jane\'s market',
-        iban: 'TR180006200119000006672315'
+        iban: 'TR180006200119000006672315',
+        currency: Iyzipay::Model::Currency::TRY
     }
     sub_merchant = Iyzipay::Model::SubMerchant.new.update(request, @options)
     begin

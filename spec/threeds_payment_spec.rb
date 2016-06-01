@@ -7,7 +7,7 @@ RSpec.describe 'Iyzipay' do
     @options = Iyzipay::Options.new
     @options.api_key = 'your api key'
     @options.secret_key = 'your secret key'
-    @options.base_url = 'https://api.iyzipay.com'
+    @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
   it 'should create payment with physical and virtual item for standard merchant' do
@@ -76,6 +76,7 @@ RSpec.describe 'Iyzipay' do
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card,
         buyer: buyer,
         billingAddress: address,
@@ -167,6 +168,7 @@ RSpec.describe 'Iyzipay' do
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card,
         buyer: buyer,
         billingAddress: address,
@@ -194,7 +196,7 @@ RSpec.describe 'Iyzipay' do
         paymentId: '1',
         conversationData: 'conversation data',
     }
-    threeds_payment = Iyzipay::Model::ThreedsPayment.new.retrieve(request, @options)
+    threeds_payment = Iyzipay::Model::ThreedsPayment.new.create(request, @options)
     begin
       $stderr.puts threeds_payment.inspect
     rescue

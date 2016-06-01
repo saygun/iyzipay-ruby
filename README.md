@@ -31,7 +31,7 @@ before :all do
   @options = Iyzipay::Options.new
   @options.api_key = 'your api key'
   @options.secret_key = 'your secret key'
-  @options.base_url = 'https://api.iyzipay.com'
+  @options.base_url = 'https://sandbox-api.iyzipay.com'
 end
 
 it 'should create payment with physical and virtual item for listing or subscription' do

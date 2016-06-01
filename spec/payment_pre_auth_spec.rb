@@ -7,7 +7,7 @@ RSpec.describe 'Iyzipay' do
     @options = Iyzipay::Options.new
     @options.api_key = 'your api key'
     @options.secret_key = 'your secret key'
-    @options.base_url = 'https://api.iyzipay.com'
+    @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
   it 'should create payment with physical and virtual item for standard merchant' do
@@ -75,6 +75,7 @@ RSpec.describe 'Iyzipay' do
         paymentChannel: Iyzipay::Model::PaymentChannel::WEB,
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card,
         buyer: buyer,
         billingAddress: address,
@@ -90,7 +91,7 @@ RSpec.describe 'Iyzipay' do
     end
   end
 
-  it 'should create payment with physical and virtual item for standard merchant' do
+  it 'should create payment with physical and virtual item for marketplace' do
     payment_card = {
         cardHolderName: 'John Doe',
         cardNumber: '5528790000000008',
@@ -161,6 +162,7 @@ RSpec.describe 'Iyzipay' do
         paymentChannel: Iyzipay::Model::PaymentChannel::WEB,
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card,
         buyer: buyer,
         billingAddress: address,
@@ -241,6 +243,7 @@ RSpec.describe 'Iyzipay' do
         paymentChannel: Iyzipay::Model::PaymentChannel::WEB,
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::SUBSCRIPTION,
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card,
         buyer: buyer,
         billingAddress: address,

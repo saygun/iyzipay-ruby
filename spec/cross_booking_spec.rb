@@ -7,7 +7,7 @@ RSpec.describe 'Iyzipay' do
     @options = Iyzipay::Options.new
     @options.api_key = 'your api key'
     @options.secret_key = 'your secret key'
-    @options.base_url = 'https://api.iyzipay.com'
+    @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
   it 'should send money to sub merchant' do
@@ -17,6 +17,7 @@ RSpec.describe 'Iyzipay' do
         subMerchantKey: 'sub merchant key',
         price: '1.0',
         reason: 'reason text',
+        currency: Iyzipay::Model::Currency::TRY
     }
     cross_booking = Iyzipay::Model::CrossBookingToSubMerchant.new.create(request, @options)
     begin
@@ -34,6 +35,7 @@ RSpec.describe 'Iyzipay' do
         subMerchantKey: 'sub merchant key',
         price: '1.0',
         reason: 'reason text',
+        currency: Iyzipay::Model::Currency::TRY
     }
     cross_booking = Iyzipay::Model::CrossBookingFromSubMerchant.new.create(request, @options)
     begin
