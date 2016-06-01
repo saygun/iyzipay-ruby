@@ -30,6 +30,7 @@ RSpec.describe 'Iyzipay' do
         paidPrice: '1',
         price: '1',
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card
     }
     threeds_initialize = Iyzipay::Model::BasicThreedsInitialize.new.create(request, @options)
@@ -63,6 +64,7 @@ RSpec.describe 'Iyzipay' do
         paidPrice: '1',
         price: '1',
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card
     }
     threeds_initialize = Iyzipay::Model::BasicThreedsInitialize.new.create(request, @options)
