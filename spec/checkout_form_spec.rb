@@ -72,6 +72,7 @@ RSpec.describe 'Iyzipay' do
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         buyer: buyer,
         billingAddress: address,
         shippingAddress: address,
