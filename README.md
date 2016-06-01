@@ -99,6 +99,7 @@ it 'should create payment with physical and virtual item for listing or subscrip
         paymentChannel: Iyzipay::Model::PaymentChannel::WEB,
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::SUBSCRIPTION,
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card,
         buyer: buyer,
         billingAddress: address,
