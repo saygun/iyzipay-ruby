@@ -17,6 +17,7 @@ module Iyzipay
             append(:buyerIp, request[:buyerIp]).
             append(:posOrderId, request[:posOrderId]).
             append(:paymentCard, PaymentCard.to_pki_string(request[:paymentCard])).
+            append(:currency, request[:currency]).
             append(:connectorName, request[:connectorName]).
             append(:callbackUrl, request[:callbackUrl]).
             get_request_string

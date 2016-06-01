@@ -7,7 +7,7 @@ RSpec.describe 'Iyzipay' do
     @options = Iyzipay::Options.new
     @options.api_key = 'your api key'
     @options.secret_key = 'your secret key'
-    @options.base_url = 'https://api.iyzipay.com'
+    @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
   it 'should refund payment' do
@@ -16,7 +16,8 @@ RSpec.describe 'Iyzipay' do
         conversationId: '123456789',
         paymentTransactionId: '702',
         price: '0.1',
-        ip: '85.34.78.112'
+        ip: '85.34.78.112',
+        currency: Iyzipay::Model::Currency::TRY
     }
     refund = Iyzipay::Model::Refund.new.create(request, @options)
     begin
@@ -33,7 +34,8 @@ RSpec.describe 'Iyzipay' do
         conversationId: '123456789',
         paymentTransactionId: '258',
         price: '0.1',
-        ip: '85.34.78.112'
+        ip: '85.34.78.112',
+        currency: Iyzipay::Model::Currency::TRY
     }
     refund = Iyzipay::Model::RefundChargedFromMerchant.new.create(request, @options)
     begin

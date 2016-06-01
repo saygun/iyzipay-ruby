@@ -7,7 +7,7 @@ RSpec.describe 'Iyzipay' do
     @options = Iyzipay::Options.new
     @options.api_key = 'your api key'
     @options.secret_key = 'your secret key'
-    @options.base_url = 'https://api.iyzipay.com'
+    @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
   it 'should post auth' do
@@ -17,6 +17,7 @@ RSpec.describe 'Iyzipay' do
         paymentId: '258',
         paidPrice: '1',
         ip: '85.34.78.112',
+        currency: Iyzipay::Model::Currency::TRY,
     }
     payment = Iyzipay::Model::PaymentPostAuth.new.create(request, @options)
     begin

@@ -7,7 +7,7 @@ RSpec.describe 'Iyzipay' do
     @options = Iyzipay::Options.new
     @options.api_key = 'your api key'
     @options.secret_key = 'your secret key'
-    @options.base_url = 'https://api.iyzipay.com'
+    @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
   it 'should initialize threeds pre auth with card' do
@@ -30,6 +30,7 @@ RSpec.describe 'Iyzipay' do
         paidPrice: '1',
         price: '1',
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card
     }
     threeds_initialize = Iyzipay::Model::BasicThreedsInitializePreAuth.new.create(request, @options)
@@ -63,6 +64,7 @@ RSpec.describe 'Iyzipay' do
         paidPrice: '1',
         price: '1',
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card
     }
     threeds_initialize = Iyzipay::Model::BasicThreedsInitializePreAuth.new.create(request, @options)
@@ -74,6 +76,22 @@ RSpec.describe 'Iyzipay' do
       unless threeds_initialize_dict['threeDSHtmlContent'].nil?
         $stderr.puts Base64.decode64(threeds_initialize_dict['threeDSHtmlContent']).inspect
       end
+    rescue
+      $stderr.puts 'oops'
+      raise
+    end
+  end
+
+  it 'should auth threeds' do
+    request = {
+        locale: 'tr',
+        conversationId: '123456789',
+        paymentId: '1'
+    }
+    basic_threeds = Iyzipay::Model::BasicThreedsPayment.new.create(request, @options)
+
+    begin
+      $stderr.puts basic_threeds.inspect
     rescue
       $stderr.puts 'oops'
       raise

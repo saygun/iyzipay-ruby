@@ -7,7 +7,7 @@ RSpec.describe 'Iyzipay' do
     @options = Iyzipay::Options.new
     @options.api_key = 'your api key'
     @options.secret_key = 'your secret key'
-    @options.base_url = 'https://api.iyzipay.com'
+    @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
   it 'should initialize threeds with card' do
@@ -30,6 +30,7 @@ RSpec.describe 'Iyzipay' do
         paidPrice: '1',
         price: '1',
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card
     }
     threeds_initialize = Iyzipay::Model::BasicThreedsInitialize.new.create(request, @options)
@@ -63,6 +64,7 @@ RSpec.describe 'Iyzipay' do
         paidPrice: '1',
         price: '1',
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         paymentCard: payment_card
     }
     threeds_initialize = Iyzipay::Model::BasicThreedsInitialize.new.create(request, @options)

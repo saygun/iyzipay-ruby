@@ -30,6 +30,8 @@ module Iyzipay
             append(:contactName, request[:contactName]).
             append(:contactSurname, request[:contactSurname]).
             append(:legalCompanyTitle, request[:legalCompanyTitle]).
+            append(:swiftCode, request[:swiftCode]).
+            append(:currency, request[:currency]).
             append(:subMerchantExternalId, request[:subMerchantExternalId]).
             append(:identityNumber, request[:identityNumber]).
             append(:taxNumber, request[:taxNumber]).
@@ -50,6 +52,8 @@ module Iyzipay
             append(:contactName, request[:contactName]).
             append(:contactSurname, request[:contactSurname]).
             append(:legalCompanyTitle, request[:legalCompanyTitle]).
+            append(:swiftCode, request[:swiftCode]).
+            append(:currency, request[:currency]).
             append(:subMerchantKey, request[:subMerchantKey]).
             append(:identityNumber, request[:identityNumber]).
             append(:taxNumber, request[:taxNumber]).

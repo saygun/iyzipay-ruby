@@ -7,7 +7,7 @@ RSpec.describe 'Iyzipay' do
     @options = Iyzipay::Options.new
     @options.api_key = 'your api key'
     @options.secret_key = 'your secret key'
-    @options.base_url = 'https://api.iyzipay.com'
+    @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
   it 'should initialize checkout form' do
@@ -72,6 +72,7 @@ RSpec.describe 'Iyzipay' do
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
         callbackUrl: 'https://www.merchant.com/callback',
+        currency: Iyzipay::Model::Currency::TRY,
         buyer: buyer,
         billingAddress: address,
         shippingAddress: address,

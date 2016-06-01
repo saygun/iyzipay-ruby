@@ -12,6 +12,7 @@ module Iyzipay
             append(:subMerchantKey, request[:subMerchantKey]).
             append_price(:price, request[:price]).
             append(:reason, request[:reason]).
+            append(:currency, request[:currency]).
             get_request_string
       end
     end
