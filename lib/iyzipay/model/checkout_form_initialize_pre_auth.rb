@@ -22,6 +22,7 @@ module Iyzipay
             append_price(:paidPrice, request[:paidPrice]).
             append(:forceThreeDS, request[:forceThreeDS]).
             append(:cardUserKey, request[:cardUserKey]).
+            append_array(:enabledInstallments, request[:enabledInstallments]).
             get_request_string
       end
     end

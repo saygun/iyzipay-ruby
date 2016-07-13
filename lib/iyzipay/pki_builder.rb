@@ -37,7 +37,7 @@ module Iyzipay
       unless array.nil?
         appended_value = ''
         array.each do |value|
-          appended_value << value
+          appended_value << value.to_s
           appended_value << ', '
         end
       end
