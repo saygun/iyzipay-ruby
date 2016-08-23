@@ -12,9 +12,9 @@ RSpec.describe 'Iyzipay' do
 
   it 'should approve payment item' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
-        paymentTransactionId: '699'
+        paymentTransactionId: '1'
     }
     approval = Iyzipay::Model::Approval.new.create(request, @options)
     begin
@@ -27,9 +27,9 @@ RSpec.describe 'Iyzipay' do
 
   it 'should disapprove payment item' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
-        paymentTransactionId: '699'
+        paymentTransactionId: '1'
     }
     disapproval = Iyzipay::Model::Disapproval.new.create(request, @options)
     begin
