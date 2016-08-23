@@ -67,7 +67,7 @@ RSpec.describe 'Iyzipay' do
         price: '0.2',
     }
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         price: '1.0',
         paidPrice: '1.1',
@@ -159,7 +159,7 @@ RSpec.describe 'Iyzipay' do
         subMerchantPrice: '0.18'
     }
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         price: '1.0',
         paidPrice: '1.1',
@@ -191,7 +191,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should auth threeds' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         paymentId: '1',
         conversationData: 'conversation data',
@@ -207,7 +207,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should retrieve payment' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         paymentId: '9',
         paymentConversationId: '123456789',

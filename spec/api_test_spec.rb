@@ -10,15 +10,10 @@ RSpec.describe 'Iyzipay' do
     @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
-  it 'should approve payment item' do
-    request = {
-        locale: Iyzipay::Model::Locale::TR,
-        conversationId: '123456789',
-        paymentTransactionId: '1'
-    }
-    approval = Iyzipay::Model::Approval.new.create(request, @options)
+  it 'should test api' do
+    apiTest = Iyzipay::Model::ApiTest.new.retrieve(@options)
     begin
-      $stderr.puts approval.inspect
+      $stderr.puts apiTest.inspect
     rescue
       $stderr.puts 'oops'
       raise

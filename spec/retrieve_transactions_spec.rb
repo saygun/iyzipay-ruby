@@ -12,7 +12,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should retrieve payout completed transactions' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         date: '2016-01-22 19:13:00'
     }
@@ -27,7 +27,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should retrieve bounced bank transfers' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         date: '2016-01-22 19:13:00'
     }

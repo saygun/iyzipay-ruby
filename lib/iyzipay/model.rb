@@ -2,6 +2,7 @@ module Model
 end
 
 require_relative 'model/address'
+require_relative 'model/api_test'
 require_relative 'model/approval'
 require_relative 'model/basic_bkm'
 require_relative 'model/basic_bkm_initialize'
@@ -36,6 +37,8 @@ require_relative 'model/payment_group'
 require_relative 'model/payment_post_auth'
 require_relative 'model/payment_pre_auth'
 require_relative 'model/payout_completed_transaction_list'
+require_relative 'model/pecco_initialize'
+require_relative 'model/pecco_payment'
 require_relative 'model/refund'
 require_relative 'model/refund_charged_from_merchant'
 require_relative 'model/sub_merchant'

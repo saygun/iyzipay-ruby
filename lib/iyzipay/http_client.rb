@@ -1,6 +1,6 @@
 module Iyzipay
   class HttpClient
-    def self.get(url, header)
+    def self.get(url, header={})
       RestClient.get(url, header)
     end
 

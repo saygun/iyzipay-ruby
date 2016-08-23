@@ -10,15 +10,15 @@ RSpec.describe 'Iyzipay' do
     @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
-  it 'should approve payment item' do
+  it 'should disapprove payment item' do
     request = {
         locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         paymentTransactionId: '1'
     }
-    approval = Iyzipay::Model::Approval.new.create(request, @options)
+    disapproval = Iyzipay::Model::Disapproval.new.create(request, @options)
     begin
-      $stderr.puts approval.inspect
+      $stderr.puts disapproval.inspect
     rescue
       $stderr.puts 'oops'
       raise
