@@ -12,7 +12,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should create personal sub merchant' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         subMerchantExternalId: 'B49224',
         subMerchantType: Iyzipay::Model::SubMerchantType::PERSONAL,
@@ -37,7 +37,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should create private sub merchant' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         subMerchantExternalId: 'S49222',
         subMerchantType: Iyzipay::Model::SubMerchantType::PRIVATE_COMPANY,
@@ -62,7 +62,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should create limited company sub merchant' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         subMerchantExternalId: 'AS49224',
         subMerchantType: Iyzipay::Model::SubMerchantType::LIMITED_OR_JOINT_STOCK_COMPANY,
@@ -87,7 +87,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should update personal sub merchant' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         subMerchantExternalId: 'B49224',
         subMerchantKey: 'sub merchant key',
@@ -112,7 +112,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should update private sub merchant' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         subMerchantExternalId: 'S49222',
         subMerchantKey: 'sub merchant key',
@@ -137,9 +137,8 @@ RSpec.describe 'Iyzipay' do
 
   it 'should update limited company sub merchant' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
-        subMerchantExternalId: 'AS49224',
         subMerchantKey: 'sub merchant key',
         address: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
         taxOffice: 'Tax office',
@@ -162,7 +161,7 @@ RSpec.describe 'Iyzipay' do
 
   it 'should retrieve sub merchant' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
         subMerchantExternalId: 'AS49224'
     }

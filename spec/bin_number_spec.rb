@@ -12,9 +12,9 @@ RSpec.describe 'Iyzipay' do
 
   it 'should retrieve bin number' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
-        binNumber: '454671'
+        binNumber: '554960'
     }
     bin_number = Iyzipay::Model::BinNumber.new.retrieve(request, @options)
     begin

@@ -10,28 +10,28 @@ RSpec.describe 'Iyzipay' do
     @options.base_url = 'https://sandbox-api.iyzipay.com'
   end
 
-  it 'should initialize bkm express' do
+  it 'should initialize bkm' do
     buyer = {
         id: 'BY789',
         name: 'John',
         surname: 'Doe',
-        identityNumber: '74300864791',
-        email: 'email@email.com',
         gsmNumber: '+905350000000',
-        registrationDate: '2013-04-21 15:12:09',
+        email: 'email@email.com',
+        identityNumber: '74300864791',
         lastLoginDate: '2015-10-05 12:43:35',
+        registrationDate: '2013-04-21 15:12:09',
         registrationAddress: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
+        ip: '85.34.78.112',
         city: 'Istanbul',
         country: 'Turkey',
-        zipCode: '34732',
-        ip: '85.34.78.112'
+        zipCode: '34732'
     }
     address = {
-        address: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
-        zipCode: '34732',
-        contactName: 'John Doe',
+        contactName: 'Jane Doe',
         city: 'Istanbul',
-        country: 'Turkey'
+        country: 'Turkey',
+        address: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
+        zipCode: '34732'
     }
 
     item1 = {
@@ -40,9 +40,7 @@ RSpec.describe 'Iyzipay' do
         category1: 'Collectibles',
         category2: 'Accessories',
         itemType: Iyzipay::Model::BasketItemType::PHYSICAL,
-        price: '0.3',
-        subMerchantKey: 'sub merchant key',
-        subMerchantPrice: '0.27'
+        price: '0.3'
     }
     item2 = {
         id: 'BI102',
@@ -50,9 +48,7 @@ RSpec.describe 'Iyzipay' do
         category1: 'Game',
         category2: 'Online Game Items',
         itemType: Iyzipay::Model::BasketItemType::VIRTUAL,
-        price: '0.5',
-        subMerchantKey: 'sub merchant key',
-        subMerchantPrice: '0.42'
+        price: '0.5'
     }
     item3 = {
         id: 'BI103',
@@ -60,14 +56,12 @@ RSpec.describe 'Iyzipay' do
         category1: 'Electronics',
         category2: 'Usb / Cable',
         itemType: Iyzipay::Model::BasketItemType::PHYSICAL,
-        price: '0.2',
-        subMerchantKey: 'sub merchant key',
-        subMerchantPrice: '0.18'
+        price: '0.2'
     }
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
-        price: '1.0',
+        price: '1',
         basketId: 'B67832',
         paymentGroup: Iyzipay::Model::PaymentGroup::PRODUCT,
         callbackUrl: 'https://www.merchant.com/callback',
@@ -91,11 +85,11 @@ RSpec.describe 'Iyzipay' do
     end
   end
 
-  it 'should retrieve bkm express payment' do
+  it 'should retrieve bkm result' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
-        token: '1462280336796'
+        token: 'token'
     }
     bkm = Iyzipay::Model::Bkm.new.retrieve(request, @options)
     begin

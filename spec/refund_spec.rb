@@ -12,32 +12,14 @@ RSpec.describe 'Iyzipay' do
 
   it 'should refund payment' do
     request = {
-        locale: 'tr',
+        locale: Iyzipay::Model::Locale::TR,
         conversationId: '123456789',
-        paymentTransactionId: '702',
-        price: '0.1',
-        ip: '85.34.78.112',
-        currency: Iyzipay::Model::Currency::TRY
+        paymentTransactionId: '1',
+        price: '0.5',
+        currency: Iyzipay::Model::Currency::TRY,
+        ip: '85.34.78.112'
     }
     refund = Iyzipay::Model::Refund.new.create(request, @options)
-    begin
-      $stderr.puts refund.inspect
-    rescue
-      $stderr.puts 'oops'
-      raise
-    end
-  end
-
-  it 'should refund payment charged from merchant' do
-    request = {
-        locale: 'tr',
-        conversationId: '123456789',
-        paymentTransactionId: '258',
-        price: '0.1',
-        ip: '85.34.78.112',
-        currency: Iyzipay::Model::Currency::TRY
-    }
-    refund = Iyzipay::Model::RefundChargedFromMerchant.new.create(request, @options)
     begin
       $stderr.puts refund.inspect
     rescue
