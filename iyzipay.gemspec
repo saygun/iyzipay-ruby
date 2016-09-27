@@ -1,6 +1,9 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'iyzipay/version'
+
+require 'iyzipay'
+#require 'iyzipay/version'
+
 
 Gem::Specification.new do |s|
   s.name                  = 'iyzipay'
